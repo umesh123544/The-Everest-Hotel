@@ -102,6 +102,31 @@
             border-radius: 15px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
             backdrop-filter: blur(10px);
+            position: relative;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(255, 107, 107, 0.8);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+            z-index: 10;
+        }
+
+        .close-btn:hover {
+            background: #ff6b6b;
+            transform: scale(1.1);
         }
 
         .video-container {
@@ -145,39 +170,6 @@
             color: #b0b0b0;
             max-width: 700px;
             margin: 0 auto;
-        }
-
-        /* Video Source Selection */
-        .video-sources {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-            margin-top: 2rem;
-            flex-wrap: wrap;
-        }
-
-        .source-btn {
-            padding: 0.8rem 1.5rem;
-            background: rgba(255, 255, 255, 0.1);
-            color: #e0e0e0;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 50px;
-            cursor: pointer;
-            transition: all 0.3s;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .source-btn:hover {
-            background: rgba(255, 107, 107, 0.2);
-            border-color: #ff6b6b;
-        }
-
-        .source-btn.active {
-            background: rgba(255, 107, 107, 0.3);
-            border-color: #ff6b6b;
-            color: #ffa36c;
         }
 
         /* Photo Gallery Section */
@@ -312,6 +304,14 @@
                 padding: 2rem 1rem;
             }
 
+            .close-btn {
+                top: 15px;
+                right: 15px;
+                width: 35px;
+                height: 35px;
+                font-size: 1rem;
+            }
+
             .gallery {
                 padding: 3rem 1rem;
             }
@@ -333,17 +333,6 @@
 
             .banner h2 {
                 font-size: 1.8rem;
-            }
-
-            .video-sources {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .source-btn {
-                width: 100%;
-                max-width: 250px;
-                justify-content: center;
             }
 
             .gallery-grid {
@@ -376,30 +365,22 @@
 
     <!-- Video Section -->
     <section id="videoBox" class="video-section">
+        <button class="close-btn" onclick="hideVideo()">
+            <i class="fas fa-times"></i>
+        </button>
         <div class="video-container">
             <div class="video-wrapper">
-                <!-- Default video - can be replaced with your video -->
-                <video id="hotelVideo" controls poster="https://images.unsplash.com/photo-1584132967334-10e028bd69f7?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80">
-                    <source src="https://vimeo.com/1140533437?share=copy&fl=sv&fe=ci" type="video/mp4">
-                    Your browser does not support the video tag.
-                </video>
+                <!-- Your Vimeo Video Embedded -->
+                <iframe src="https://player.vimeo.com/video/1140533437?autoplay=0&title=0&byline=0&portrait=0" 
+                        frameborder="0" 
+                        allow="autoplay; fullscreen; picture-in-picture" 
+                        allowfullscreen>
+                </iframe>
             </div>
             
             <div class="video-info">
                 <h3>The Everest Hotel Experience</h3>
                 <p>Take a virtual tour of our luxurious facilities, stunning rooms, and exceptional amenities that make The Everest Hotel the premier destination for travelers seeking both adventure and comfort.</p>
-            </div>
-            
-            <div class="video-sources">
-                <button class="source-btn active" onclick="changeVideoSource('direct')">
-                    <i class="fas fa-video"></i> Direct Video
-                </button>
-                <button class="source-btn" onclick="changeVideoSource('vimeo')">
-                    <i class="fab fa-vimeo"></i> Vimeo
-                </button>
-                <button class="source-btn" onclick="changeVideoSource('drive')">
-                    <i class="fab fa-google-drive"></i> Google Drive
-                </button>
             </div>
         </div>
     </section>
@@ -442,6 +423,7 @@
             <div class="social-links">
                 <a href="#"><i class="fab fa-facebook"></i></a>
                 <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-tripadvisor"></i></a>
             </div>
             <p class="copyright">© 2025 The Everest Hotel. All rights reserved.</p>
         </div>
@@ -454,49 +436,19 @@
                 top: document.getElementById("videoBox").offsetTop - 20, 
                 behavior: 'smooth' 
             });
-            
-            // Auto-play the video when shown
-            const video = document.getElementById("hotelVideo");
-            video.play().catch(e => {
-                console.log("Autoplay prevented:", e);
-            });
         }
         
-        function changeVideoSource(sourceType) {
-            const videoWrapper = document.querySelector('.video-wrapper');
-            const sourceButtons = document.querySelectorAll('.source-btn');
-            const video = document.getElementById('hotelVideo');
-            
-            // Update active button
-            sourceButtons.forEach(btn => btn.classList.remove('active'));
-            event.target.classList.add('active');
-            
-            // Change video source based on selection
-            if (sourceType === 'direct') {
-                videoWrapper.innerHTML = `
-                    <video id="hotelVideo" controls poster="https://images.unsplash.com/photo-1584132967334-10e028bd69f7?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80">
-                        <source src="https://vimeo.com/1140533437?share=copy&fl=sv&fe=ci" type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>
-                `;
-            } else if (sourceType === 'vimeo') {
-                videoWrapper.innerHTML = `
-                    <iframe src="https://vimeo.com/1140533437?share=copy&fl=sv&fe=ci" 
-                            frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen>
-                    </iframe>
-                `;
-            } else if (sourceType === 'drive') {
-                videoWrapper.innerHTML = `
-                    <iframe src="https://drive.google.com/file/d/1XyZq3tP31HcKpS9JejdWQJg_3tY6t7u7/preview" 
-                            frameborder="0" allow="autoplay" allowfullscreen>
-                    </iframe>
-                `;
-            }
+        function hideVideo() {
+            document.getElementById("videoBox").style.display = "none";
         }
+
+        // Close video when clicking outside the video container
+        document.addEventListener('click', function(event) {
+            const videoSection = document.getElementById('videoBox');
+            if (event.target === videoSection) {
+                hideVideo();
+            }
+        });
     </script>
 </body>
 </html>
-
-
-
-
