@@ -1,4 +1,81 @@
-<video width="600" controls>
-  <source src="video.mp4" type="video/mp4">
-  Your browser does not support the video tag.
-</video>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Video Website</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f3f3f3;
+        }
+
+        header {
+            background: #333;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            font-size: 24px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: auto;
+            padding: 20px;
+        }
+
+        h2 {
+            text-align: center;
+        }
+
+        .video-box {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        iframe {
+            border: none;
+            border-radius: 10px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 15px;
+            margin-top: 30px;
+            background: #333;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        My Video Website
+    </header>
+
+    <div class="container">
+        <h2>Watch the Video</h2>
+
+        <div class="video-box">
+            <!-- Replace FILE_ID with your actual Google Drive File ID -->
+            <iframe 
+                src="https://drive.google.com/file/d/FILE_ID/preview"
+                width="800" 
+                height="450" 
+                allow="autoplay">
+            </iframe>
+        </div>
+    </div>
+
+    <footer>
+        © 2025 My Website | GitHub Pages
+    </footer>
+
+</body>
+</html>
