@@ -13,29 +13,55 @@
         }
 
         header {
-            background: #333;
+            background: #222;
             color: white;
             padding: 20px;
             text-align: center;
             font-size: 24px;
         }
 
-        .container {
-            max-width: 900px;
-            margin: auto;
-            padding: 20px;
+        /* Banner Section */
+        .banner {
+            background: url('https://images.unsplash.com/photo-1503264116251-35a269479413?auto=format&fit=crop&w=1200&q=60') no-repeat center/cover;
+            height: 350px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-shadow: 0px 0px 8px rgba(0,0,0,0.6);
         }
 
-        h2 {
+        .banner h1 {
+            font-size: 40px;
+            margin: 0;
+        }
+
+        .play-btn {
+            margin-top: 20px;
+            padding: 12px 25px;
+            font-size: 20px;
+            background: #ff4747;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .play-btn:hover {
+            background: #e93737;
+        }
+
+        /* Video Popup Section */
+        .video-section {
+            display: none;
+            padding: 30px;
             text-align: center;
-        }
-
-        .video-box {
             background: white;
-            padding: 20px;
+            margin: 20px;
             border-radius: 10px;
             box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
-            text-align: center;
         }
 
         iframe {
@@ -51,6 +77,14 @@
             color: white;
         }
     </style>
+
+    <script>
+        function showVideo() {
+            document.getElementById("videoBox").style.display = "block";
+            window.scrollTo({ top: document.getElementById("videoBox").offsetTop, behavior: 'smooth' });
+        }
+    </script>
+
 </head>
 
 <body>
@@ -59,18 +93,23 @@
         My Video Website
     </header>
 
-    <div class="container">
-        <h2>Watch the Video</h2>
+    <!-- Banner Section -->
+    <div class="banner">
+        <h1>Welcome to My Website</h1>
+        <button class="play-btn" onclick="showVideo()">▶ Play Now</button>
+    </div>
 
-        <div class="video-box">
-            <!-- Replace FILE_ID with your actual Google Drive File ID -->
-            <iframe 
-                src="https://drive.google.com/file/d/142qced4nSO8_H7OVfisywR5ku_3OqCry/view?usp=sharing"
-                width="800" 
-                height="450" 
-                allow="autoplay">
-            </iframe>
-        </div>
+    <!-- Hidden Video Section -->
+    <div id="videoBox" class="video-section">
+        <h2>Now Playing</h2>
+
+        <!-- Replace FILE_ID with your Google Drive ID -->
+        <iframe 
+            src="https://drive.google.com/file/d/FILE_ID/preview"
+            width="800" 
+            height="450" 
+            allow="autoplay">
+        </iframe>
     </div>
 
     <footer>
@@ -79,5 +118,3 @@
 
 </body>
 </html>
-
-
