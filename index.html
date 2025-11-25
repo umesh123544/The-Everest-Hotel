@@ -6,6 +6,10 @@
     <title>My Video Website</title>
 
     <style>
+        * {
+            box-sizing: border-box;
+        }
+        
         body {
             margin: 0;
             font-family: Arial, sans-serif;
@@ -22,7 +26,8 @@
 
         /* Banner Section */
         .banner {
-            background: url('https://ibb.co/chZbSQpq') no-repeat center/cover;
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
+                        url('https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80') no-repeat center/cover;
             height: 350px;
             display: flex;
             flex-direction: column;
@@ -30,16 +35,18 @@
             align-items: center;
             color: white;
             text-shadow: 0px 0px 8px rgba(0,0,0,0.6);
+            padding: 20px;
         }
 
         .banner h1 {
             font-size: 40px;
             margin: 0;
+            text-align: center;
         }
 
         .play-btn {
             margin-top: 20px;
-            padding: 12px 25px;
+            padding: 15px 30px;
             font-size: 20px;
             background: #ff4747;
             color: white;
@@ -47,6 +54,7 @@
             border-radius: 8px;
             cursor: pointer;
             transition: 0.3s;
+            min-height: 50px; /* Better touch target */
         }
 
         .play-btn:hover {
@@ -56,7 +64,7 @@
         /* Video Popup Section */
         .video-section {
             display: none;
-            padding: 30px;
+            padding: 20px;
             text-align: center;
             background: white;
             margin: 20px;
@@ -64,7 +72,21 @@
             box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
         }
 
+        .video-container {
+            position: relative;
+            width: 100%;
+            height: 0;
+            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+            margin: 0 auto;
+            max-width: 800px;
+        }
+
         iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
             border: none;
             border-radius: 10px;
         }
@@ -75,6 +97,48 @@
             margin-top: 30px;
             background: #333;
             color: white;
+        }
+
+        /* Media Queries for Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .banner {
+                height: 250px;
+            }
+            
+            .banner h1 {
+                font-size: 32px;
+            }
+            
+            .play-btn {
+                padding: 12px 25px;
+                font-size: 18px;
+            }
+            
+            .video-section {
+                margin: 10px;
+                padding: 15px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header {
+                padding: 15px;
+                font-size: 20px;
+            }
+            
+            .banner {
+                height: 200px;
+            }
+            
+            .banner h1 {
+                font-size: 24px;
+            }
+            
+            .play-btn {
+                padding: 10px 20px;
+                font-size: 16px;
+                min-height: 44px; /* Minimum touch target size */
+            }
         }
     </style>
 
@@ -102,21 +166,17 @@
     <!-- Hidden Video Section -->
     <div id="videoBox" class="video-section">
         <h2>Now Playing</h2>
-
-        <!-- Replace FILE_ID with your Google Drive ID -->
-        <iframe 
-            src="https://drive.google.com/file/d/FILE_ID/preview"
-            width="800" 
-            height="450" 
-            allow="autoplay">
-        </iframe>
+        <div class="video-container">
+            <!-- Replace FILE_ID with your Google Drive ID -->
+            <iframe 
+                src="https://drive.google.com/file/d/FILE_ID/preview"
+                allow="autoplay">
+            </iframe>
+        </div>
     </div>
 
     <footer>
         © 2025 My Website | GitHub Pages
     </footer>
-
 </body>
 </html>
-
-
