@@ -3,182 +3,509 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Video Website</title>
-
+    <title>The Everest Hotel</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
-            box-sizing: border-box;
-        }
-        
-        body {
             margin: 0;
-            font-family: Arial, sans-serif;
-            background: #f3f3f3;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #1a2a3a, #0c151f);
+            color: #fff;
+            line-height: 1.6;
         }
 
         header {
-            background: #222;
-            color: white;
-            padding: 20px;
-            text-align: center;
-            font-size: 24px;
+            background: rgba(0, 0, 0, 0.85);
+            padding: 1.2rem 2rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo i {
+            color: #ff6b6b;
+            font-size: 1.8rem;
+        }
+
+        .logo h1 {
+            font-size: 1.6rem;
+            font-weight: 700;
+            background: linear-gradient(90deg, #ff6b6b, #ffa36c);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         /* Banner Section */
         .banner {
-            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
-                        url('https://i.ibb.co/dsF8Tg33/IMG-3067.png') no-repeat center/cover;
-            height: 350px;
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
+                        url('https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80') no-repeat center/cover;
+            height: 70vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            color: white;
-            text-shadow: 0px 0px 8px rgba(0,0,0,0.6);
-            padding: 20px;
+            text-align: center;
+            padding: 2rem;
+            position: relative;
         }
 
-        .banner h1 {
-            font-size: 40px;
-            margin: 0;
-            text-align: center;
+        .banner-content {
+            max-width: 800px;
+        }
+
+        .banner h2 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
+        }
+
+        .banner p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            color: #e0e0e0;
         }
 
         .play-btn {
-            margin-top: 20px;
-            padding: 15px 30px;
-            font-size: 20px;
-            background: #ff4747;
+            padding: 1rem 2.5rem;
+            font-size: 1.2rem;
+            background: linear-gradient(90deg, #ff6b6b, #ffa36c);
             color: white;
             border: none;
-            border-radius: 8px;
+            border-radius: 50px;
             cursor: pointer;
-            transition: 0.3s;
-            min-height: 50px; /* Better touch target */
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin: 0 auto;
+            box-shadow: 0 4px 15px rgba(255, 107, 107, 0.4);
         }
 
         .play-btn:hover {
-            background: #e93737;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(255, 107, 107, 0.6);
         }
 
-        /* Video Popup Section */
+        /* Video Section */
         .video-section {
             display: none;
-            padding: 20px;
-            text-align: center;
-            background: white;
-            margin: 20px;
-            border-radius: 10px;
-            box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+            padding: 3rem 2rem;
+            background: rgba(255, 255, 255, 0.05);
+            margin: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
         }
 
         .video-container {
             position: relative;
             width: 100%;
-            height: 0;
-            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+            max-width: 900px;
             margin: 0 auto;
-            max-width: 800px;
         }
 
-        iframe {
+        .video-wrapper {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+            height: 0;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+        }
+
+        iframe, video {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
             border: none;
-            border-radius: 10px;
         }
 
-        footer {
+        .video-info {
+            margin-top: 2rem;
             text-align: center;
-            padding: 15px;
-            margin-top: 30px;
-            background: #333;
-            color: white;
         }
 
-        /* Media Queries for Mobile Responsiveness */
+        .video-info h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: #ffa36c;
+        }
+
+        .video-info p {
+            color: #b0b0b0;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* Video Source Selection */
+        .video-sources {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .source-btn {
+            padding: 0.8rem 1.5rem;
+            background: rgba(255, 255, 255, 0.1);
+            color: #e0e0e0;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .source-btn:hover {
+            background: rgba(255, 107, 107, 0.2);
+            border-color: #ff6b6b;
+        }
+
+        .source-btn.active {
+            background: rgba(255, 107, 107, 0.3);
+            border-color: #ff6b6b;
+            color: #ffa36c;
+        }
+
+        /* Photo Gallery Section */
+        .gallery {
+            padding: 4rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            font-size: 2.2rem;
+            color: #ffa36c;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s;
+            aspect-ratio: 4/3;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+
+        .gallery-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+            color: white;
+            padding: 1.5rem 1rem 1rem;
+            transform: translateY(100%);
+            transition: transform 0.3s;
+        }
+
+        .gallery-item:hover .gallery-caption {
+            transform: translateY(0);
+        }
+
+        /* Footer */
+        footer {
+            background: rgba(0, 0, 0, 0.9);
+            padding: 3rem 2rem;
+            text-align: center;
+            margin-top: 3rem;
+        }
+
+        .footer-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .footer-logo {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: #ffa36c;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .social-links a {
+            color: #e0e0e0;
+            font-size: 1.5rem;
+            transition: color 0.3s;
+        }
+
+        .social-links a:hover {
+            color: #ff6b6b;
+        }
+
+        .copyright {
+            color: #888;
+            margin-top: 2rem;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Design */
         @media (max-width: 768px) {
+            header {
+                padding: 1rem;
+            }
+
             .banner {
-                height: 250px;
+                height: 60vh;
+                padding: 1.5rem;
             }
-            
-            .banner h1 {
-                font-size: 32px;
+
+            .banner h2 {
+                font-size: 2.2rem;
             }
-            
+
+            .banner p {
+                font-size: 1rem;
+            }
+
             .play-btn {
-                padding: 12px 25px;
-                font-size: 18px;
+                padding: 0.8rem 2rem;
+                font-size: 1.1rem;
             }
-            
+
             .video-section {
-                margin: 10px;
-                padding: 15px;
+                margin: 1rem;
+                padding: 2rem 1rem;
+            }
+
+            .gallery {
+                padding: 3rem 1rem;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
             }
         }
 
         @media (max-width: 480px) {
-            header {
-                padding: 15px;
-                font-size: 20px;
+            .banner h2 {
+                font-size: 1.8rem;
             }
-            
-            .banner {
-                height: 200px;
+
+            .video-sources {
+                flex-direction: column;
+                align-items: center;
             }
-            
-            .banner h1 {
-                font-size: 24px;
+
+            .source-btn {
+                width: 100%;
+                max-width: 250px;
+                justify-content: center;
             }
-            
-            .play-btn {
-                padding: 10px 20px;
-                font-size: 16px;
-                min-height: 44px; /* Minimum touch target size */
+
+            .gallery-grid {
+                grid-template-columns: 1fr;
             }
         }
     </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <i class="fas fa-mountain"></i>
+            <h1>The EVEREST HOTEL</h1>
+        </div>
+    </header>
+
+    <!-- Banner Section -->
+    <section class="banner">
+        <div class="banner-content">
+            <h2>Experience Luxury at The Everest Hotel</h2>
+            <p>Discover our world-class amenities, breathtaking views, and unparalleled service in the heart of the mountains.</p>
+            <button class="play-btn" onclick="showVideo()">
+                <i class="fas fa-play"></i> Watch Our Story
+            </button>
+        </div>
+    </section>
+
+    <!-- Video Section -->
+    <section id="videoBox" class="video-section">
+        <div class="video-container">
+            <div class="video-wrapper">
+                <!-- Default video - can be replaced with your video -->
+                <video id="hotelVideo" controls poster="https://images.unsplash.com/photo-1584132967334-10e028bd69f7?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80">
+                    <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+            
+            <div class="video-info">
+                <h3>The Everest Hotel Experience</h3>
+                <p>Take a virtual tour of our luxurious facilities, stunning rooms, and exceptional amenities that make The Everest Hotel the premier destination for travelers seeking both adventure and comfort.</p>
+            </div>
+            
+            <div class="video-sources">
+                <button class="source-btn active" onclick="changeVideoSource('direct')">
+                    <i class="fas fa-video"></i> Direct Video
+                </button>
+                <button class="source-btn" onclick="changeVideoSource('vimeo')">
+                    <i class="fab fa-vimeo"></i> Vimeo
+                </button>
+                <button class="source-btn" onclick="changeVideoSource('drive')">
+                    <i class="fab fa-google-drive"></i> Google Drive
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Photo Gallery Section -->
+    <section class="gallery">
+        <h2 class="section-title">Photo Gallery</h2>
+        <div class="gallery-grid">
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Luxury Room">
+                <div class="gallery-caption">
+                    <h3>Luxury Suite</h3>
+                    <p>Spacious rooms with mountain views</p>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1611892440504-42a792e24d32?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Hotel Pool">
+                <div class="gallery-caption">
+                    <h3>Infinity Pool</h3>
+                    <p>Stunning pool with panoramic views</p>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Restaurant">
+                <div class="gallery-caption">
+                    <h3>Fine Dining</h3>
+                    <p>Gourmet cuisine in elegant settings</p>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1540497077202-7c8a3999166f?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Spa">
+                <div class="gallery-caption">
+                    <h3>Wellness Spa</h3>
+                    <p>Relax and rejuvenate your senses</p>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Lobby">
+                <div class="gallery-caption">
+                    <h3>Grand Lobby</h3>
+                    <p>Elegant entrance with warm hospitality</p>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Mountain View">
+                <div class="gallery-caption">
+                    <h3>Mountain Views</h3>
+                    <p>Breathtaking scenery from every angle</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">The EVEREST HOTEL</div>
+            <p>Luxury accommodation with breathtaking mountain views</p>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+            </div>
+            <p class="copyright">© 2025 The Everest Hotel. All rights reserved.</p>
+        </div>
+    </footer>
 
     <script>
         function showVideo() {
             document.getElementById("videoBox").style.display = "block";
-            window.scrollTo({ top: document.getElementById("videoBox").offsetTop, behavior: 'smooth' });
+            window.scrollTo({ 
+                top: document.getElementById("videoBox").offsetTop - 20, 
+                behavior: 'smooth' 
+            });
+            
+            // Auto-play the video when shown
+            const video = document.getElementById("hotelVideo");
+            video.play().catch(e => {
+                console.log("Autoplay prevented:", e);
+            });
+        }
+        
+        function changeVideoSource(sourceType) {
+            const videoWrapper = document.querySelector('.video-wrapper');
+            const sourceButtons = document.querySelectorAll('.source-btn');
+            const video = document.getElementById('hotelVideo');
+            
+            // Update active button
+            sourceButtons.forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+            
+            // Change video source based on selection
+            if (sourceType === 'direct') {
+                videoWrapper.innerHTML = `
+                    <video id="hotelVideo" controls poster="https://images.unsplash.com/photo-1584132967334-10e028bd69f7?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80">
+                        <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                `;
+            } else if (sourceType === 'vimeo') {
+                videoWrapper.innerHTML = `
+                    <iframe src="https://player.vimeo.com/video/1084537?h=bf0fb4d5de&color=ff6b6b&title=0&byline=0&portrait=0" 
+                            frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen>
+                    </iframe>
+                `;
+            } else if (sourceType === 'drive') {
+                videoWrapper.innerHTML = `
+                    <iframe src="https://drive.google.com/file/d/1XyZq3tP31HcKpS9JejdWQJg_3tY6t7u7/preview" 
+                            frameborder="0" allow="autoplay" allowfullscreen>
+                    </iframe>
+                `;
+            }
         }
     </script>
-
-</head>
-
-<body>
-
-    <header>
-       THE EVEREST HOTEL
-    </header>
-
-    <!-- Banner Section -->
-    <div class="banner">
-        <h1></h1>
-        <button class="play-btn" onclick="showVideo()">▶ Play Now</button>
-    </div>
-
-    <!-- Hidden Video Section -->
-    <div id="videoBox" class="video-section">
-        <h2>Now Playing</h2>
-        <div class="video-container">
-            <!-- Replace FILE_ID with your Google Drive ID -->
-            <iframe 
-                src="https://drive.google.com/file/d/FILE_ID/preview"
-                allow="autoplay">
-            </iframe>
-        </div>
-    </div>
-
-    <footer>
-        © 2025 My Website | GitHub Pages
-    </footer>
 </body>
 </html>
-
-
