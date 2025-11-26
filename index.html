@@ -21,7 +21,7 @@
 
         header {
             background: rgba(0, 0, 0, 0.85);
-            padding: 0.5rem 2rem; /* Very short header */
+            padding: 0.5rem 2rem;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -29,7 +29,7 @@
             top: 0;
             z-index: 100;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-            min-height: 80px; /* Fixed height for header */
+            min-height: 80px;
         }
 
         .logo {
@@ -39,7 +39,7 @@
         }
 
         .logo-img {
-            height: 70px; /* Big logo size */
+            height: 70px;
             width: auto;
             transition: transform 0.3s ease;
         }
@@ -79,6 +79,9 @@
         }
 
         .play-btn {
+            position: absolute;
+            bottom: 40px;
+            right: 40px;
             padding: 1rem 2.5rem;
             font-size: 1.2rem;
             background: linear-gradient(90deg, #ff6b6b, #ffa36c);
@@ -90,8 +93,8 @@
             display: flex;
             align-items: center;
             gap: 10px;
-            margin: 0 auto;
             box-shadow: 0 4px 15px rgba(255, 107, 107, 0.4);
+            z-index: 5;
         }
 
         .play-btn:hover {
@@ -145,7 +148,7 @@
         .video-wrapper {
             position: relative;
             width: 100%;
-            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+            padding-bottom: 56.25%;
             height: 0;
             border-radius: 10px;
             overflow: hidden;
@@ -285,7 +288,7 @@
             }
 
             .logo-img {
-                height: 60px; /* Big on tablet too */
+                height: 60px;
             }
 
             .banner {
@@ -302,6 +305,8 @@
             }
 
             .play-btn {
+                bottom: 30px;
+                right: 30px;
                 padding: 0.8rem 2rem;
                 font-size: 1.1rem;
             }
@@ -340,11 +345,18 @@
             }
 
             .logo-img {
-                height: 50px; /* Big on mobile too */
+                height: 50px;
             }
 
             .banner h2 {
                 font-size: 1.8rem;
+            }
+
+            .play-btn {
+                bottom: 20px;
+                right: 20px;
+                padding: 0.7rem 1.5rem;
+                font-size: 1rem;
             }
 
             .gallery-grid {
@@ -360,7 +372,7 @@
 <body>
     <header>
         <div class="logo">
-            <img src="https://portal.saralbankingsewa.com/storage/emailcampaignimages/LOGO%20png%20white-01%20(1).png_1764137387" alt="Everest Hotel Logo" class="logo-img">
+            <img src="https://portal.saralbankingsewa.com/storage/emailcampaignimages/LOGO%20png%20white-01%20(1).png_1764131090" alt="Everest Hotel Logo" class="logo-img">
         </div>
     </header>
 
@@ -368,13 +380,14 @@
     <section class="banner">
         <div class="banner-content">
             <h2></h2>
-            <p></p>
-            <button class="play-btn" onclick="showVideo()">
-                <i class="fas fa-play"></i> Watch Our Story
-            </button>
+            <pEverest Hotel Kathmandu is a blend of modern comfort and Nepali heritage, offering stylish rooms, great dining, and warm hospitality</p>
         </div>
+        <button class="play-btn" onclick="showVideo()">
+            <i class="fas fa-play"></i> Play Now
+        </button>
     </section>
 
+    <!-- Rest of the HTML remains the same -->
     <!-- Video Section -->
     <section id="videoBox" class="video-section">
         <button class="close-btn" onclick="hideVideo()">
@@ -382,7 +395,6 @@
         </button>
         <div class="video-container">
             <div class="video-wrapper">
-                <!-- Your Vimeo Video Embedded -->
                 <iframe src="https://player.vimeo.com/video/1140533437?autoplay=0&title=0&byline=0&portrait=0" 
                         frameborder="0" 
                         allow="autoplay; fullscreen; picture-in-picture" 
@@ -392,7 +404,7 @@
             
             <div class="video-info">
                 <h3>The Everest Hotel </h3>
-                <p>Madan Bhandari Road, Kathmandu , Nepal</p>
+                <p>Everest Hotel Kathmandu is a blend of modern comfort and Nepali heritage, offering stylish rooms, great dining, and warm hospitality.</p>
             </div>
         </div>
     </section>
@@ -431,7 +443,7 @@
     <footer>
         <div class="footer-content">
             <div class="footer-logo">THE EVEREST HOTEL</div>
-            <p>The Everest Hotel Kathmandu blends modern luxury with Nepali heritage, offering elegant rooms and warm hospitality. Conveniently located just 3 km from the airport, it provides easy access to major temples, attractions, and city hotspots</p>
+            <p>The Everest Hotel Kathmandu is a blend of modern comfort and Nepali heritage, offering stylish rooms, great dining, and warm hospitality. Located just 3 km from the airport, it provides easy access to major temples and tourist attractions.</p>
             <div class="social-links">
                 <a href="#"><i class="fab fa-facebook"></i></a>
                 <a href="#"><i class="fab fa-instagram"></i></a>
@@ -464,10 +476,3 @@
     </script>
 </body>
 </html>
-
-
-
-
-
-
-
