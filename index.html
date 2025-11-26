@@ -21,7 +21,7 @@
 
         header {
             background: rgba(0, 0, 0, 0.85);
-            padding: 1.5rem 2rem;
+            padding: 0.5rem 2rem; /* Very short header */
             display: flex;
             justify-content: center;
             align-items: center;
@@ -29,23 +29,18 @@
             top: 0;
             z-index: 100;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            min-height: 80px; /* Fixed height for header */
         }
 
         .logo {
             display: flex;
             align-items: center;
-            gap: 15px;
-        }
-
-        .logo i {
-            color: #ff6b6b;
-            font-size: 3rem;
+            justify-content: center;
         }
 
         .logo-img {
-            height: 150px;
+            height: 70px; /* Big logo size */
             width: auto;
-            filter: brightness(0) invert(1);
             transition: transform 0.3s ease;
         }
 
@@ -285,15 +280,12 @@
         /* Responsive Design */
         @media (max-width: 768px) {
             header {
-                padding: 1.2rem;
-            }
-
-            .logo i {
-                font-size: 2.5rem;
+                padding: 0.4rem 1rem;
+                min-height: 70px;
             }
 
             .logo-img {
-                height: 40px;
+                height: 60px; /* Big on tablet too */
             }
 
             .banner {
@@ -342,12 +334,13 @@
         }
 
         @media (max-width: 480px) {
-            .logo i {
-                font-size: 2rem;
+            header {
+                padding: 0.3rem 1rem;
+                min-height: 60px;
             }
 
             .logo-img {
-                height: 35px;
+                height: 50px; /* Big on mobile too */
             }
 
             .banner h2 {
@@ -368,7 +361,6 @@
     <header>
         <div class="logo">
             <img src="https://portal.saralbankingsewa.com/storage/emailcampaignimages/LOGO%20png%20white-01%20(1).png_1764131090" alt="Everest Hotel Logo" class="logo-img">
-
         </div>
     </header>
 
@@ -472,6 +464,3 @@
     </script>
 </body>
 </html>
-
-
-
