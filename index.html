@@ -380,14 +380,13 @@
     <section class="banner">
         <div class="banner-content">
             <h2></h2>
-            <pEverest Hotel Kathmandu is a blend of modern comfort and Nepali heritage, offering stylish rooms, great dining, and warm hospitality</p>
+            <p></p>
         </div>
         <button class="play-btn" onclick="showVideo()">
             <i class="fas fa-play"></i> Play Now
         </button>
     </section>
 
-    <!-- Rest of the HTML remains the same -->
     <!-- Video Section -->
     <section id="videoBox" class="video-section">
         <button class="close-btn" onclick="hideVideo()">
@@ -395,7 +394,7 @@
         </button>
         <div class="video-container">
             <div class="video-wrapper">
-                <iframe src="https://player.vimeo.com/video/1140533437?autoplay=0&title=0&byline=0&portrait=0" 
+                <iframe id="videoPlayer" src="https://player.vimeo.com/video/1140533437?autoplay=0&title=0&byline=0&portrait=0" 
                         frameborder="0" 
                         allow="autoplay; fullscreen; picture-in-picture" 
                         allowfullscreen>
@@ -454,16 +453,30 @@
     </footer>
 
     <script>
+        // Add Vimeo Player API
+        var iframe = document.getElementById('videoPlayer');
+        var player = new Vimeo.Player(iframe);
+        
         function showVideo() {
             document.getElementById("videoBox").style.display = "block";
             window.scrollTo({ 
                 top: document.getElementById("videoBox").offsetTop - 20, 
                 behavior: 'smooth' 
             });
+            
+            // Play the video when showing
+            player.play().catch(function(error) {
+                console.log('Error playing video:', error);
+            });
         }
         
         function hideVideo() {
             document.getElementById("videoBox").style.display = "none";
+            
+            // Pause the video when hiding
+            player.pause().catch(function(error) {
+                console.log('Error pausing video:', error);
+            });
         }
 
         // Close video when clicking outside the video container
@@ -474,12 +487,8 @@
             }
         });
     </script>
+    
+    <!-- Add Vimeo Player API -->
+    <script src="https://player.vimeo.com/api/player.js"></script>
 </body>
 </html>
-
-
-
-
-
-
-
