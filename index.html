@@ -3,492 +3,1768 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Everest Hotel</title>
+    <meta name="description" content="Professional Business Solutions - Quality Services You Can Trust">
+    <meta name="keywords" content="business, services, consulting, professional">
+    <title>BizPro Solutions - Your Trusted Business Partner</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+    
+    <!-- Font Awesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-
-        body {
-            background: linear-gradient(135deg, #1a2a3a, #0c151f);
-            color: #fff;
-            line-height: 1.6;
-        }
-
-        header {
-            background: rgba(0, 0, 0, 0.85);
-            padding: 0.5rem 2rem;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-            min-height: 80px;
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .logo-img {
-            height: 80px;
-            width: auto;
-            transition: transform 0.3s ease;
-        }
-
-        .logo-img:hover {
-            transform: scale(1.05);
-        }
-
-        /* Banner Section */
-        .banner {
-            background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.7)), 
-                        url('https://i.ibb.co/Y4w0x1cW/Everest-Night-Edit.jpg') no-repeat center/cover;
-            height: 70vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 2rem;
-            position: relative;
-        }
-
-        .banner-content {
-            max-width: 800px;
-        }
-
-        .banner h2 {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
-        }
-
-        .banner p {
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
-            color: #e0e0e0;
-        }
-
-        .play-btn {
-            position: absolute;
-            bottom: 40px;
-            right: 40px;
-            padding: 1rem 2.5rem;
-            font-size: 1.2rem;
-            background: linear-gradient(90deg, #ff6b6b, #ffa36c);
-            color: white;
-            border: none;
-            border-radius: 50px;
-            cursor: pointer;
-            transition: all 0.3s;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            box-shadow: 0 4px 15px rgba(255, 107, 107, 0.4);
-            z-index: 5;
-        }
-
-        .play-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(255, 107, 107, 0.6);
-        }
-
-        /* Video Section */
-        .video-section {
-            display: none;
-            padding: 3rem 2rem;
-            background: rgba(255, 255, 255, 0.05);
-            margin: 2rem;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-            backdrop-filter: blur(10px);
-            position: relative;
-        }
-
-        .close-btn {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            background: rgba(255, 107, 107, 0.8);
-            color: white;
-            border: none;
-            border-radius: 50%;
-            width: 40px;
-            height: 40px;
-            font-size: 1.2rem;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s;
-            z-index: 10;
-        }
-
-        .close-btn:hover {
-            background: #ff6b6b;
-            transform: scale(1.1);
-        }
-
-        .video-container {
-            position: relative;
-            width: 100%;
-            max-width: 900px;
-            margin: 0 auto;
-        }
-
-        .video-wrapper {
-            position: relative;
-            width: 100%;
-            padding-bottom: 56.25%;
-            height: 0;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
-        }
-
-        iframe, video {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border: none;
-        }
-
-        .video-info {
-            margin-top: 2rem;
-            text-align: center;
-        }
-
-        .video-info h3 {
-            font-size: 1.8rem;
-            margin-bottom: 1rem;
-            color: #ffa36c;
-        }
-
-        .video-info p {
-            color: #b0b0b0;
-            max-width: 700px;
-            margin: 0 auto;
-        }
-
-        /* Photo Gallery Section */
-        .gallery {
-            padding: 4rem 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .section-title {
-            text-align: center;
-            margin-bottom: 3rem;
-            font-size: 2.2rem;
-            color: #ffa36c;
-        }
-
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 1.5rem;
-        }
-
-        .gallery-item {
-            position: relative;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-            transition: transform 0.3s;
-            aspect-ratio: 4/3;
-        }
-
-        .gallery-item:hover {
-            transform: translateY(-5px);
-        }
-
-        .gallery-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s;
-        }
-
-        .gallery-item:hover img {
-            transform: scale(1.05);
-        }
-
-        .gallery-title {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
-            color: white;
-            padding: 1.2rem 1rem;
-            text-align: center;
-            font-size: 1.3rem;
-            font-weight: 600;
-        }
-
-        /* Footer */
-        footer {
-            background: rgba(0, 0, 0, 0.9);
-            padding: 3rem 2rem;
-            text-align: center;
-            margin-top: 3rem;
-        }
-
-        .footer-content {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .footer-logo {
-            font-size: 1.8rem;
-            margin-bottom: 1.5rem;
-            color: #ffa36c;
-        }
-
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 1.5rem;
-            margin: 2rem 0;
-        }
-
-        .social-links a {
-            color: #e0e0e0;
-            font-size: 1.5rem;
-            transition: color 0.3s;
-        }
-
-        .social-links a:hover {
-            color: #ff6b6b;
-        }
-
-        .copyright {
-            color: #888;
-            margin-top: 2rem;
-            font-size: 0.9rem;
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            header {
-                padding: 0.4rem 1rem;
-                min-height: 70px;
-            }
-
-            .logo-img {
-                height: 60px;
-            }
-
-            .banner {
-                height: 60vh;
-                padding: 1.5rem;
-            }
-
-            .banner h2 {
-                font-size: 2.2rem;
-            }
-
-            .banner p {
-                font-size: 1rem;
-            }
-
-            .play-btn {
-                bottom: 30px;
-                right: 30px;
-                padding: 0.8rem 2rem;
-                font-size: 1.1rem;
-            }
-
-            .video-section {
-                margin: 1rem;
-                padding: 2rem 1rem;
-            }
-
-            .close-btn {
-                top: 15px;
-                right: 15px;
-                width: 35px;
-                height: 35px;
-                font-size: 1rem;
-            }
-
-            .gallery {
-                padding: 3rem 1rem;
-            }
-
-            .section-title {
-                font-size: 1.8rem;
-            }
-
-            .gallery-title {
-                font-size: 1.1rem;
-                padding: 1rem 0.8rem;
-            }
-        }
-
-        @media (max-width: 480px) {
-            header {
-                padding: 0.3rem 1rem;
-                min-height: 60px;
-            }
-
-            .logo-img {
-                height: 50px;
-            }
-
-            .banner h2 {
-                font-size: 1.8rem;
-            }
-
-            .play-btn {
-                bottom: 20px;
-                right: 20px;
-                padding: 0.7rem 1.5rem;
-                font-size: 1rem;
-            }
-
-            .gallery-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .gallery-title {
-                font-size: 1rem;
-            }
-        }
-    </style>
+    
+    <!-- AOS Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <header>
-        <div class="logo">
-            <img src="https://portal.saralbankingsewa.com/storage/emailcampaignimages/LOGO%20png%20white-01%20(1).png_1764146463" alt="Everest Hotel Logo" class="logo-img">
-        </div>
+    <!-- Preloader -->
+    <div id="preloader">
+        <div class="spinner"></div>
+    </div>
+
+    <!-- Navigation Bar -->
+    <header class="header" id="header">
+        <nav class="navbar">
+            <div class="container">
+                <div class="nav-wrapper">
+                    <a href="#home" class="logo">
+                        <i class="fas fa-chart-line"></i>
+                        <span>BizPro Solutions</span>
+                    </a>
+                    
+                    <button class="mobile-nav-toggle" id="mobile-nav-toggle">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                    
+                    <ul class="nav-menu" id="nav-menu">
+                        <li><a href="#home" class="nav-link active">Home</a></li>
+                        <li><a href="#about" class="nav-link">About</a></li>
+                        <li><a href="#services" class="nav-link">Services</a></li>
+                        <li><a href="#features" class="nav-link">Features</a></li>
+                        <li><a href="#pricing" class="nav-link">Pricing</a></li>
+                        <li><a href="#testimonials" class="nav-link">Testimonials</a></li>
+                        <li><a href="#contact" class="nav-link">Contact</a></li>
+                        <li><a href="#contact" class="nav-link btn-primary">Get Started</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
     </header>
 
-    <!-- Banner Section -->
-    <section class="banner">
-        <div class="banner-content">
-            <h2></h2>
-            <p></p>
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text" data-aos="fade-right">
+                    <h1 class="hero-title">
+                        Grow Your Business With 
+                        <span class="text-gradient">Professional Solutions</span>
+                    </h1>
+                    <p class="hero-description">
+                        Transform your business with our innovative strategies and cutting-edge technology. 
+                        We help companies achieve sustainable growth and maximize their potential.
+                    </p>
+                    <div class="hero-buttons">
+                        <a href="#contact" class="btn btn-primary btn-lg">
+                            <i class="fas fa-rocket"></i> Get Started Now
+                        </a>
+                        <a href="#about" class="btn btn-outline btn-lg">
+                            <i class="fas fa-play-circle"></i> Learn More
+                        </a>
+                    </div>
+                    
+                    <div class="hero-stats">
+                        <div class="stat">
+                            <h3>500+</h3>
+                            <p>Happy Clients</p>
+                        </div>
+                        <div class="stat">
+                            <h3>95%</h3>
+                            <p>Success Rate</p>
+                        </div>
+                        <div class="stat">
+                            <h3>24/7</h3>
+                            <p>Support</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="hero-image" data-aos="fade-left">
+                    <div class="hero-img-wrapper">
+                        <svg viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+                            <defs>
+                                <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#667eea;stop-opacity:1" />
+                                    <stop offset="100%" style="stop-color:#764ba2;stop-opacity:1" />
+                                </linearGradient>
+                            </defs>
+                            <path fill="url(#gradient)" d="M250,100 C350,100 450,200 450,300 C450,400 350,450 250,400 C150,350 50,400 50,300 C50,200 150,100 250,100 Z" />
+                        </svg>
+                    </div>
+                </div>
+            </div>
         </div>
-        <button class="play-btn" onclick="showVideo()">
-            <i class="fas fa-play"></i> Play Now
-        </button>
+        
+        <!-- Animated Background -->
+        <div class="hero-bg">
+            <div class="hero-bg-shape shape-1"></div>
+            <div class="hero-bg-shape shape-2"></div>
+            <div class="hero-bg-shape shape-3"></div>
+        </div>
     </section>
 
-    <!-- Video Section -->
-    <section id="videoBox" class="video-section">
-        <button class="close-btn" onclick="hideVideo()">
-            <i class="fas fa-times"></i>
-        </button>
-        <div class="video-container">
-            <div class="video-wrapper">
-                <iframe id="videoPlayer" src="https://player.vimeo.com/video/1140533437?autoplay=0&title=0&byline=0&portrait=0" 
-                        frameborder="0" 
-                        allow="autoplay; fullscreen; picture-in-picture" 
-                        allowfullscreen>
-                </iframe>
+    <!-- About Section -->
+    <section id="about" class="about section">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2 class="section-title">About Us</h2>
+                <p class="section-subtitle">Learn more about our mission and values</p>
             </div>
             
-            <div class="video-info">
-                <h3>The Everest Hotel </h3>
-                <p>Everest Hotel Kathmandu is a blend of modern comfort and Nepali heritage, offering stylish rooms, great dining, and warm hospitality.</p>
+            <div class="about-content">
+                <div class="about-text" data-aos="fade-right">
+                    <h3>We Are Your Trusted Business Partner</h3>
+                    <p>
+                        With over 10 years of experience in the industry, we've helped hundreds of businesses 
+                        achieve their goals through innovative solutions and dedicated support.
+                    </p>
+                    <div class="about-features">
+                        <div class="about-feature">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Expert Team</span>
+                        </div>
+                        <div class="about-feature">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Proven Results</span>
+                        </div>
+                        <div class="about-feature">
+                            <i class="fas fa-check-circle"></i>
+                            <span>24/7 Support</span>
+                        </div>
+                        <div class="about-feature">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Best Practices</span>
+                        </div>
+                    </div>
+                    <a href="#services" class="btn btn-primary">
+                        <i class="fas fa-arrow-right"></i> Explore Services
+                    </a>
+                </div>
+                
+                <div class="about-cards" data-aos="fade-left">
+                    <div class="info-card">
+                        <i class="fas fa-users"></i>
+                        <h4>Professional Team</h4>
+                        <p>Experienced experts dedicated to your success</p>
+                    </div>
+                    <div class="info-card">
+                        <i class="fas fa-chart-line"></i>
+                        <h4>Growth Focused</h4>
+                        <p>Strategies designed to scale your business</p>
+                    </div>
+                    <div class="info-card">
+                        <i class="fas fa-shield-alt"></i>
+                        <h4>Secure & Reliable</h4>
+                        <p>Your data and business are in safe hands</p>
+                    </div>
+                    <div class="info-card">
+                        <i class="fas fa-headset"></i>
+                        <h4>Dedicated Support</h4>
+                        <p>Always here when you need us</p>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Photo Gallery Section -->
-    <section class="gallery">
-        <h2 class="section-title">Photo Gallery</h2>
-        <div class="gallery-grid">
-            <div class="gallery-item">
-                <img src="https://i.ibb.co/LD0qmhT9/King-Deluxe-3.webp" alt="King Deluxe">
-                <div class="gallery-title">King Deluxe</div>
+    <!-- Services Section -->
+    <section id="services" class="services section bg-light">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2 class="section-title">Our Services</h2>
+                <p class="section-subtitle">Comprehensive solutions for your business needs</p>
             </div>
-            <div class="gallery-item">
-                <img src="https://i.ibb.co/Ld1GbrH9/hall-15.webp" alt="Hall">
-                <div class="gallery-title">Hall</div>
-            </div>
-            <div class="gallery-item">
-                <img src="https://i.ibb.co/Q7tdZcm6/Pool-3-with-starburst.webp" alt="Pool">
-                <div class="gallery-title">Pool</div>
-            </div>
-            <div class="gallery-item">
-                <img src="https://i.ibb.co/23kwN6Sz/Bar-1.webp" alt="Bar">
-                <div class="gallery-title">Bar</div>
-            </div>
-            <div class="gallery-item">
-                <img src="https://i.ibb.co/QFqxKysR/Gym-1.webp" alt="GYM">
-                <div class="gallery-title">GYM</div>
-            </div>
-            <div class="gallery-item">
-                <img src="https://i.ibb.co/hJ2SjYkR/Club-Lounge-1.webp" alt="CLub Lounge">
-                <div class="gallery-title">CLub Lounge</div>
+            
+            <div class="services-grid">
+                <div class="service-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="service-icon">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                    <h3>Web Development</h3>
+                    <p>Custom websites and web applications built with modern technologies</p>
+                    <ul class="service-features">
+                        <li>Responsive Design</li>
+                        <li>SEO Optimized</li>
+                        <li>Fast Loading</li>
+                    </ul>
+                    <a href="#contact" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
+                </div>
+                
+                <div class="service-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="service-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3>Mobile Apps</h3>
+                    <p>Native and cross-platform mobile applications for iOS and Android</p>
+                    <ul class="service-features">
+                        <li>User-Friendly UI</li>
+                        <li>Cross-Platform</li>
+                        <li>Secure & Scalable</li>
+                    </ul>
+                    <a href="#contact" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
+                </div>
+                
+                <div class="service-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="service-icon">
+                        <i class="fas fa-bullhorn"></i>
+                    </div>
+                    <h3>Digital Marketing</h3>
+                    <p>Comprehensive digital marketing strategies to grow your online presence</p>
+                    <ul class="service-features">
+                        <li>SEO & SEM</li>
+                        <li>Social Media</li>
+                        <li>Content Marketing</li>
+                    </ul>
+                    <a href="#contact" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
+                </div>
+                
+                <div class="service-card" data-aos="fade-up" data-aos-delay="400">
+                    <div class="service-icon">
+                        <i class="fas fa-cloud"></i>
+                    </div>
+                    <h3>Cloud Solutions</h3>
+                    <p>Secure and scalable cloud infrastructure for your business</p>
+                    <ul class="service-features">
+                        <li>AWS & Azure</li>
+                        <li>Data Migration</li>
+                        <li>24/7 Monitoring</li>
+                    </ul>
+                    <a href="#contact" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
+                </div>
+                
+                <div class="service-card" data-aos="fade-up" data-aos-delay="500">
+                    <div class="service-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Cybersecurity</h3>
+                    <p>Protect your business from cyber threats with our security solutions</p>
+                    <ul class="service-features">
+                        <li>Security Audits</li>
+                        <li>Penetration Testing</li>
+                        <li>Compliance</li>
+                    </ul>
+                    <a href="#contact" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
+                </div>
+                
+                <div class="service-card" data-aos="fade-up" data-aos-delay="600">
+                    <div class="service-icon">
+                        <i class="fas fa-chart-bar"></i>
+                    </div>
+                    <h3>Business Analytics</h3>
+                    <p>Data-driven insights to make informed business decisions</p>
+                    <ul class="service-features">
+                        <li>Data Analysis</li>
+                        <li>Custom Reports</li>
+                        <li>KPI Tracking</li>
+                    </ul>
+                    <a href="#contact" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
+                </div>
             </div>
         </div>
     </section>
 
-    <footer>
-        <div class="footer-content">
-            <div class="footer-logo">THE EVEREST HOTEL</div>
-            <p>The Everest Hotel Kathmandu is a blend of modern comfort and Nepali heritage, offering stylish rooms, great dining, and warm hospitality. Located just 3 km from the airport, it provides easy access to major temples and tourist attractions.</p>
-            <div class="social-links">
-                <a href="https://www.facebook.com/theeveresthotel"><i class="fab fa-facebook"></i></a>
-                <a href="https://www.instagram.com/everest_hotel_kathmandu/"><i class="fab fa-instagram"></i></a>
-                <a href="#"><i class="fab fa-tripadvisor"></i></a>
+    <!-- Features Section -->
+    <section id="features" class="features section">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2 class="section-title">Why Choose Us</h2>
+                <p class="section-subtitle">Features that set us apart from the competition</p>
             </div>
-            <p class="copyright">© 2025 The Everest Hotel. All rights reserved.</p>
+            
+            <div class="features-wrapper">
+                <div class="features-list" data-aos="fade-right">
+                    <div class="feature-item active" data-feature="1">
+                        <div class="feature-icon">
+                            <i class="fas fa-rocket"></i>
+                        </div>
+                        <div class="feature-content">
+                            <h3>Fast Implementation</h3>
+                            <p>Quick project delivery without compromising quality</p>
+                        </div>
+                    </div>
+                    
+                    <div class="feature-item" data-feature="2">
+                        <div class="feature-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <div class="feature-content">
+                            <h3>Expert Team</h3>
+                            <p>Skilled professionals with years of experience</p>
+                        </div>
+                    </div>
+                    
+                    <div class="feature-item" data-feature="3">
+                        <div class="feature-icon">
+                            <i class="fas fa-cog"></i>
+                        </div>
+                        <div class="feature-content">
+                            <h3>Custom Solutions</h3>
+                            <p>Tailored strategies for your specific needs</p>
+                        </div>
+                    </div>
+                    
+                    <div class="feature-item" data-feature="4">
+                        <div class="feature-icon">
+                            <i class="fas fa-headset"></i>
+                        </div>
+                        <div class="feature-content">
+                            <h3>24/7 Support</h3>
+                            <p>Round-the-clock assistance whenever you need it</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="features-showcase" data-aos="fade-left">
+                    <div class="showcase-item active" data-showcase="1">
+                        <img src="https://via.placeholder.com/600x400/667eea/ffffff?text=Fast+Implementation" alt="Fast Implementation">
+                    </div>
+                    <div class="showcase-item" data-showcase="2">
+                        <img src="https://via.placeholder.com/600x400/764ba2/ffffff?text=Expert+Team" alt="Expert Team">
+                    </div>
+                    <div class="showcase-item" data-showcase="3">
+                        <img src="https://via.placeholder.com/600x400/667eea/ffffff?text=Custom+Solutions" alt="Custom Solutions">
+                    </div>
+                    <div class="showcase-item" data-showcase="4">
+                        <img src="https://via.placeholder.com/600x400/764ba2/ffffff?text=24/7+Support" alt="24/7 Support">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="pricing section bg-light">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2 class="section-title">Pricing Plans</h2>
+                <p class="section-subtitle">Choose the perfect plan for your business</p>
+            </div>
+            
+            <div class="pricing-toggle" data-aos="fade-up">
+                <span>Monthly</span>
+                <label class="switch">
+                    <input type="checkbox" id="pricing-toggle">
+                    <span class="slider"></span>
+                </label>
+                <span>Annual <span class="badge">Save 20%</span></span>
+            </div>
+            
+            <div class="pricing-cards">
+                <div class="pricing-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="pricing-header">
+                        <h3>Starter</h3>
+                        <p>Perfect for small businesses</p>
+                    </div>
+                    <div class="pricing-price">
+                        <span class="currency">$</span>
+                        <span class="amount monthly">29</span>
+                        <span class="amount annual" style="display: none;">290</span>
+                        <span class="period">/month</span>
+                    </div>
+                    <ul class="pricing-features">
+                        <li><i class="fas fa-check"></i> Up to 5 users</li>
+                        <li><i class="fas fa-check"></i> Basic features</li>
+                        <li><i class="fas fa-check"></i> Email support</li>
+                        <li><i class="fas fa-check"></i> 10GB storage</li>
+                        <li><i class="fas fa-times"></i> Custom domain</li>
+                        <li><i class="fas fa-times"></i> Advanced analytics</li>
+                    </ul>
+                    <a href="#contact" class="btn btn-outline btn-block">Get Started</a>
+                </div>
+                
+                <div class="pricing-card featured" data-aos="fade-up" data-aos-delay="200">
+                    <div class="badge-popular">Most Popular</div>
+                    <div class="pricing-header">
+                        <h3>Professional</h3>
+                        <p>For growing businesses</p>
+                    </div>
+                    <div class="pricing-price">
+                        <span class="currency">$</span>
+                        <span class="amount monthly">79</span>
+                        <span class="amount annual" style="display: none;">790</span>
+                        <span class="period">/month</span>
+                    </div>
+                    <ul class="pricing-features">
+                        <li><i class="fas fa-check"></i> Up to 20 users</li>
+                        <li><i class="fas fa-check"></i> Advanced features</li>
+                        <li><i class="fas fa-check"></i> Priority support</li>
+                        <li><i class="fas fa-check"></i> 100GB storage</li>
+                        <li><i class="fas fa-check"></i> Custom domain</li>
+                        <li><i class="fas fa-check"></i> Advanced analytics</li>
+                    </ul>
+                    <a href="#contact" class="btn btn-primary btn-block">Get Started</a>
+                </div>
+                
+                <div class="pricing-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="pricing-header">
+                        <h3>Enterprise</h3>
+                        <p>For large organizations</p>
+                    </div>
+                    <div class="pricing-price">
+                        <span class="currency">$</span>
+                        <span class="amount monthly">199</span>
+                        <span class="amount annual" style="display: none;">1990</span>
+                        <span class="period">/month</span>
+                    </div>
+                    <ul class="pricing-features">
+                        <li><i class="fas fa-check"></i> Unlimited users</li>
+                        <li><i class="fas fa-check"></i> All features</li>
+                        <li><i class="fas fa-check"></i> Dedicated support</li>
+                        <li><i class="fas fa-check"></i> Unlimited storage</li>
+                        <li><i class="fas fa-check"></i> Multiple domains</li>
+                        <li><i class="fas fa-check"></i> Custom integrations</li>
+                    </ul>
+                    <a href="#contact" class="btn btn-outline btn-block">Contact Sales</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="testimonials section">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2 class="section-title">What Our Clients Say</h2>
+                <p class="section-subtitle">Don't just take our word for it</p>
+            </div>
+            
+            <div class="testimonials-slider" data-aos="fade-up">
+                <div class="testimonial-track">
+                    <div class="testimonial-card">
+                        <div class="testimonial-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p class="testimonial-text">
+                            "Excellent service! They transformed our business with their innovative solutions. 
+                            The team was professional and delivered beyond our expectations."
+                        </p>
+                        <div class="testimonial-author">
+                            <img src="https://via.placeholder.com/60x60/667eea/ffffff?text=JD" alt="John Doe">
+                            <div>
+                                <h4>John Doe</h4>
+                                <p>CEO, Tech Corp</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="testimonial-card">
+                        <div class="testimonial-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p class="testimonial-text">
+                            "Outstanding results! Our revenue increased by 150% after implementing their strategies. 
+                            Highly recommend their services to any business."
+                        </p>
+                        <div class="testimonial-author">
+                            <img src="https://via.placeholder.com/60x60/764ba2/ffffff?text=SM" alt="Sarah Miller">
+                            <div>
+                                <h4>Sarah Miller</h4>
+                                <p>Marketing Director, Retail Plus</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="testimonial-card">
+                        <div class="testimonial-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p class="testimonial-text">
+                            "The best decision we made for our company. Professional, reliable, and always available. 
+                            They truly care about their clients' success."
+                        </p>
+                        <div class="testimonial-author">
+                            <img src="https://via.placeholder.com/60x60/667eea/ffffff?text=MC" alt="Michael Chen">
+                            <div>
+                                <h4>Michael Chen</h4>
+                                <p>Founder, StartupHub</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-nav">
+                    <button class="prev-btn"><i class="fas fa-chevron-left"></i></button>
+                    <button class="next-btn"><i class="fas fa-chevron-right"></i></button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact section bg-light">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2 class="section-title">Get In Touch</h2>
+                <p class="section-subtitle">We'd love to hear from you</p>
+            </div>
+            
+            <div class="contact-wrapper">
+                <div class="contact-info" data-aos="fade-right">
+                    <div class="contact-card">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <h3>Visit Us</h3>
+                        <p>123 Business Street<br>New York, NY 10001<br>United States</p>
+                    </div>
+                    
+                    <div class="contact-card">
+                        <i class="fas fa-phone-alt"></i>
+                        <h3>Call Us</h3>
+                        <p>+1 (555) 123-4567<br>+1 (555) 987-6543<br>Mon-Fri 9am-6pm EST</p>
+                    </div>
+                    
+                    <div class="contact-card">
+                        <i class="fas fa-envelope"></i>
+                        <h3>Email Us</h3>
+                        <p>info@bizpro.com<br>support@bizpro.com<br>sales@bizpro.com</p>
+                    </div>
+                    
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                
+                <div class="contact-form" data-aos="fade-left">
+                    <form id="contactForm">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="firstName">First Name *</label>
+                                <input type="text" id="firstName" name="firstName" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="lastName">Last Name *</label>
+                                <input type="text" id="lastName" name="lastName" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="email">Email Address *</label>
+                                <input type="email" id="email" name="email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">Phone Number</label>
+                                <input type="tel" id="phone" name="phone">
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="company">Company Name</label>
+                            <input type="text" id="company" name="company">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="service">Service Interested In</label>
+                            <select id="service" name="service">
+                                <option value="">Select a service</option>
+                                <option value="web-development">Web Development</option>
+                                <option value="mobile-apps">Mobile Apps</option>
+                                <option value="digital-marketing">Digital Marketing</option>
+                                <option value="cloud-solutions">Cloud Solutions</option>
+                                <option value="cybersecurity">Cybersecurity</option>
+                                <option value="analytics">Business Analytics</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message">Message *</label>
+                            <textarea id="message" name="message" rows="5" required></textarea>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="newsletter" name="newsletter">
+                                <span>Subscribe to our newsletter for updates and offers</span>
+                            </label>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary btn-lg btn-block">
+                            <i class="fas fa-paper-plane"></i> Send Message
+                        </button>
+                        
+                        <div id="form-message" class="form-message"></div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="newsletter">
+        <div class="container">
+            <div class="newsletter-content" data-aos="zoom-in">
+                <h2>Subscribe to Our Newsletter</h2>
+                <p>Get the latest updates, news, and special offers</p>
+                <form id="newsletterForm" class="newsletter-form">
+                    <div class="input-group">
+                        <input type="email" placeholder="Enter your email address" required>
+                        <button type="submit" class="btn btn-primary">Subscribe</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-top">
+                <div class="footer-column">
+                    <h3>About BizPro</h3>
+                    <p>We are dedicated to helping businesses grow and succeed through innovative solutions and exceptional service.</p>
+                    <div class="footer-social">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#pricing">Pricing</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Services</h3>
+                    <ul>
+                        <li><a href="#">Web Development</a></li>
+                        <li><a href="#">Mobile Apps</a></li>
+                        <li><a href="#">Digital Marketing</a></li>
+                        <li><a href="#">Cloud Solutions</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Legal</h3>
+                    <ul>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Cookie Policy</a></li>
+                        <li><a href="#">Disclaimer</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 BizPro Solutions. All rights reserved.</p>
+                <p>Designed with <i class="fas fa-heart"></i> by BizPro Team</p>
+            </div>
         </div>
     </footer>
 
-    <script>
-        // Add Vimeo Player API
-        var iframe = document.getElementById('videoPlayer');
-        var player = new Vimeo.Player(iframe);
-        
-        function showVideo() {
-            document.getElementById("videoBox").style.display = "block";
-            window.scrollTo({ 
-                top: document.getElementById("videoBox").offsetTop - 20, 
-                behavior: 'smooth' 
-            });
-            
-            // Play the video when showing
-            player.play().catch(function(error) {
-                console.log('Error playing video:', error);
-            });
-        }
-        
-        function hideVideo() {
-            document.getElementById("videoBox").style.display = "none";
-            
-            // Pause the video when hiding
-            player.pause().catch(function(error) {
-                console.log('Error pausing video:', error);
-            });
-        }
+    <!-- Back to Top Button -->
+    <button id="backToTop" class="back-to-top">
+        <i class="fas fa-chevron-up"></i>
+    </button>
 
-        // Close video when clicking outside the video container
-        document.addEventListener('click', function(event) {
-            const videoSection = document.getElementById('videoBox');
-            if (event.target === videoSection) {
-                hideVideo();
-            }
-        });
-    </script>
-    
-    <!-- Add Vimeo Player API -->
-    <script src="https://player.vimeo.com/api/player.js"></script>
+    <!-- Cookie Consent Banner -->
+    <div id="cookieConsent" class="cookie-consent">
+        <div class="cookie-content">
+            <p>We use cookies to enhance your experience. By continuing to visit this site you agree to our use of cookies.</p>
+            <button class="btn btn-primary btn-sm" onclick="acceptCookies()">Accept</button>
+            <a href="#" class="cookie-link">Learn More</a>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="js/script.js"></script>
 </body>
 </html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Professional Business Solutions - Quality Services You Can Trust">
+    <meta name="keywords" content="business, services, consulting, professional">
+    <title>BizPro Solutions - Your Trusted Business Partner</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+    
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- AOS Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Preloader -->
+    <div id="preloader">
+        <div class="spinner"></div>
+    </div>
+
+    <!-- Navigation Bar -->
+    <header class="header" id="header">
+        <nav class="navbar">
+            <div class="container">
+                <div class="nav-wrapper">
+                    <a href="#home" class="logo">
+                        <i class="fas fa-chart-line"></i>
+                        <span>BizPro Solutions</span>
+                    </a>
+                    
+                    <button class="mobile-nav-toggle" id="mobile-nav-toggle">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                    
+                    <ul class="nav-menu" id="nav-menu">
+                        <li><a href="#home" class="nav-link active">Home</a></li>
+                        <li><a href="#about" class="nav-link">About</a></li>
+                        <li><a href="#services" class="nav-link">Services</a></li>
+                        <li><a href="#features" class="nav-link">Features</a></li>
+                        <li><a href="#pricing" class="nav-link">Pricing</a></li>
+                        <li><a href="#testimonials" class="nav-link">Testimonials</a></li>
+                        <li><a href="#contact" class="nav-link">Contact</a></li>
+                        <li><a href="#contact" class="nav-link btn-primary">Get Started</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text" data-aos="fade-right">
+                    <h1 class="hero-title">
+                        Grow Your Business With 
+                        <span class="text-gradient">Professional Solutions</span>
+                    </h1>
+                    <p class="hero-description">
+                        Transform your business with our innovative strategies and cutting-edge technology. 
+                        We help companies achieve sustainable growth and maximize their potential.
+                    </p>
+                    <div class="hero-buttons">
+                        <a href="#contact" class="btn btn-primary btn-lg">
+                            <i class="fas fa-rocket"></i> Get Started Now
+                        </a>
+                        <a href="#about" class="btn btn-outline btn-lg">
+                            <i class="fas fa-play-circle"></i> Learn More
+                        </a>
+                    </div>
+                    
+                    <div class="hero-stats">
+                        <div class="stat">
+                            <h3>500+</h3>
+                            <p>Happy Clients</p>
+                        </div>
+                        <div class="stat">
+                            <h3>95%</h3>
+                            <p>Success Rate</p>
+                        </div>
+                        <div class="stat">
+                            <h3>24/7</h3>
+                            <p>Support</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="hero-image" data-aos="fade-left">
+                    <div class="hero-img-wrapper">
+                        <svg viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+                            <defs>
+                                <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#667eea;stop-opacity:1" />
+                                    <stop offset="100%" style="stop-color:#764ba2;stop-opacity:1" />
+                                </linearGradient>
+                            </defs>
+                            <path fill="url(#gradient)" d="M250,100 C350,100 450,200 450,300 C450,400 350,450 250,400 C150,350 50,400 50,300 C50,200 150,100 250,100 Z" />
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Animated Background -->
+        <div class="hero-bg">
+            <div class="hero-bg-shape shape-1"></div>
+            <div class="hero-bg-shape shape-2"></div>
+            <div class="hero-bg-shape shape-3"></div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about section">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2 class="section-title">About Us</h2>
+                <p class="section-subtitle">Learn more about our mission and values</p>
+            </div>
+            
+            <div class="about-content">
+                <div class="about-text" data-aos="fade-right">
+                    <h3>We Are Your Trusted Business Partner</h3>
+                    <p>
+                        With over 10 years of experience in the industry, we've helped hundreds of businesses 
+                        achieve their goals through innovative solutions and dedicated support.
+                    </p>
+                    <div class="about-features">
+                        <div class="about-feature">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Expert Team</span>
+                        </div>
+                        <div class="about-feature">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Proven Results</span>
+                        </div>
+                        <div class="about-feature">
+                            <i class="fas fa-check-circle"></i>
+                            <span>24/7 Support</span>
+                        </div>
+                        <div class="about-feature">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Best Practices</span>
+                        </div>
+                    </div>
+                    <a href="#services" class="btn btn-primary">
+                        <i class="fas fa-arrow-right"></i> Explore Services
+                    </a>
+                </div>
+                
+                <div class="about-cards" data-aos="fade-left">
+                    <div class="info-card">
+                        <i class="fas fa-users"></i>
+                        <h4>Professional Team</h4>
+                        <p>Experienced experts dedicated to your success</p>
+                    </div>
+                    <div class="info-card">
+                        <i class="fas fa-chart-line"></i>
+                        <h4>Growth Focused</h4>
+                        <p>Strategies designed to scale your business</p>
+                    </div>
+                    <div class="info-card">
+                        <i class="fas fa-shield-alt"></i>
+                        <h4>Secure & Reliable</h4>
+                        <p>Your data and business are in safe hands</p>
+                    </div>
+                    <div class="info-card">
+                        <i class="fas fa-headset"></i>
+                        <h4>Dedicated Support</h4>
+                        <p>Always here when you need us</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services section bg-light">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2 class="section-title">Our Services</h2>
+                <p class="section-subtitle">Comprehensive solutions for your business needs</p>
+            </div>
+            
+            <div class="services-grid">
+                <div class="service-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="service-icon">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                    <h3>Web Development</h3>
+                    <p>Custom websites and web applications built with modern technologies</p>
+                    <ul class="service-features">
+                        <li>Responsive Design</li>
+                        <li>SEO Optimized</li>
+                        <li>Fast Loading</li>
+                    </ul>
+                    <a href="#contact" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
+                </div>
+                
+                <div class="service-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="service-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3>Mobile Apps</h3>
+                    <p>Native and cross-platform mobile applications for iOS and Android</p>
+                    <ul class="service-features">
+                        <li>User-Friendly UI</li>
+                        <li>Cross-Platform</li>
+                        <li>Secure & Scalable</li>
+                    </ul>
+                    <a href="#contact" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
+                </div>
+                
+                <div class="service-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="service-icon">
+                        <i class="fas fa-bullhorn"></i>
+                    </div>
+                    <h3>Digital Marketing</h3>
+                    <p>Comprehensive digital marketing strategies to grow your online presence</p>
+                    <ul class="service-features">
+                        <li>SEO & SEM</li>
+                        <li>Social Media</li>
+                        <li>Content Marketing</li>
+                    </ul>
+                    <a href="#contact" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
+                </div>
+                
+                <div class="service-card" data-aos="fade-up" data-aos-delay="400">
+                    <div class="service-icon">
+                        <i class="fas fa-cloud"></i>
+                    </div>
+                    <h3>Cloud Solutions</h3>
+                    <p>Secure and scalable cloud infrastructure for your business</p>
+                    <ul class="service-features">
+                        <li>AWS & Azure</li>
+                        <li>Data Migration</li>
+                        <li>24/7 Monitoring</li>
+                    </ul>
+                    <a href="#contact" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
+                </div>
+                
+                <div class="service-card" data-aos="fade-up" data-aos-delay="500">
+                    <div class="service-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Cybersecurity</h3>
+                    <p>Protect your business from cyber threats with our security solutions</p>
+                    <ul class="service-features">
+                        <li>Security Audits</li>
+                        <li>Penetration Testing</li>
+                        <li>Compliance</li>
+                    </ul>
+                    <a href="#contact" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
+                </div>
+                
+                <div class="service-card" data-aos="fade-up" data-aos-delay="600">
+                    <div class="service-icon">
+                        <i class="fas fa-chart-bar"></i>
+                    </div>
+                    <h3>Business Analytics</h3>
+                    <p>Data-driven insights to make informed business decisions</p>
+                    <ul class="service-features">
+                        <li>Data Analysis</li>
+                        <li>Custom Reports</li>
+                        <li>KPI Tracking</li>
+                    </ul>
+                    <a href="#contact" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="features section">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2 class="section-title">Why Choose Us</h2>
+                <p class="section-subtitle">Features that set us apart from the competition</p>
+            </div>
+            
+            <div class="features-wrapper">
+                <div class="features-list" data-aos="fade-right">
+                    <div class="feature-item active" data-feature="1">
+                        <div class="feature-icon">
+                            <i class="fas fa-rocket"></i>
+                        </div>
+                        <div class="feature-content">
+                            <h3>Fast Implementation</h3>
+                            <p>Quick project delivery without compromising quality</p>
+                        </div>
+                    </div>
+                    
+                    <div class="feature-item" data-feature="2">
+                        <div class="feature-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <div class="feature-content">
+                            <h3>Expert Team</h3>
+                            <p>Skilled professionals with years of experience</p>
+                        </div>
+                    </div>
+                    
+                    <div class="feature-item" data-feature="3">
+                        <div class="feature-icon">
+                            <i class="fas fa-cog"></i>
+                        </div>
+                        <div class="feature-content">
+                            <h3>Custom Solutions</h3>
+                            <p>Tailored strategies for your specific needs</p>
+                        </div>
+                    </div>
+                    
+                    <div class="feature-item" data-feature="4">
+                        <div class="feature-icon">
+                            <i class="fas fa-headset"></i>
+                        </div>
+                        <div class="feature-content">
+                            <h3>24/7 Support</h3>
+                            <p>Round-the-clock assistance whenever you need it</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="features-showcase" data-aos="fade-left">
+                    <div class="showcase-item active" data-showcase="1">
+                        <img src="https://via.placeholder.com/600x400/667eea/ffffff?text=Fast+Implementation" alt="Fast Implementation">
+                    </div>
+                    <div class="showcase-item" data-showcase="2">
+                        <img src="https://via.placeholder.com/600x400/764ba2/ffffff?text=Expert+Team" alt="Expert Team">
+                    </div>
+                    <div class="showcase-item" data-showcase="3">
+                        <img src="https://via.placeholder.com/600x400/667eea/ffffff?text=Custom+Solutions" alt="Custom Solutions">
+                    </div>
+                    <div class="showcase-item" data-showcase="4">
+                        <img src="https://via.placeholder.com/600x400/764ba2/ffffff?text=24/7+Support" alt="24/7 Support">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="pricing section bg-light">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2 class="section-title">Pricing Plans</h2>
+                <p class="section-subtitle">Choose the perfect plan for your business</p>
+            </div>
+            
+            <div class="pricing-toggle" data-aos="fade-up">
+                <span>Monthly</span>
+                <label class="switch">
+                    <input type="checkbox" id="pricing-toggle">
+                    <span class="slider"></span>
+                </label>
+                <span>Annual <span class="badge">Save 20%</span></span>
+            </div>
+            
+            <div class="pricing-cards">
+                <div class="pricing-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="pricing-header">
+                        <h3>Starter</h3>
+                        <p>Perfect for small businesses</p>
+                    </div>
+                    <div class="pricing-price">
+                        <span class="currency">$</span>
+                        <span class="amount monthly">29</span>
+                        <span class="amount annual" style="display: none;">290</span>
+                        <span class="period">/month</span>
+                    </div>
+                    <ul class="pricing-features">
+                        <li><i class="fas fa-check"></i> Up to 5 users</li>
+                        <li><i class="fas fa-check"></i> Basic features</li>
+                        <li><i class="fas fa-check"></i> Email support</li>
+                        <li><i class="fas fa-check"></i> 10GB storage</li>
+                        <li><i class="fas fa-times"></i> Custom domain</li>
+                        <li><i class="fas fa-times"></i> Advanced analytics</li>
+                    </ul>
+                    <a href="#contact" class="btn btn-outline btn-block">Get Started</a>
+                </div>
+                
+                <div class="pricing-card featured" data-aos="fade-up" data-aos-delay="200">
+                    <div class="badge-popular">Most Popular</div>
+                    <div class="pricing-header">
+                        <h3>Professional</h3>
+                        <p>For growing businesses</p>
+                    </div>
+                    <div class="pricing-price">
+                        <span class="currency">$</span>
+                        <span class="amount monthly">79</span>
+                        <span class="amount annual" style="display: none;">790</span>
+                        <span class="period">/month</span>
+                    </div>
+                    <ul class="pricing-features">
+                        <li><i class="fas fa-check"></i> Up to 20 users</li>
+                        <li><i class="fas fa-check"></i> Advanced features</li>
+                        <li><i class="fas fa-check"></i> Priority support</li>
+                        <li><i class="fas fa-check"></i> 100GB storage</li>
+                        <li><i class="fas fa-check"></i> Custom domain</li>
+                        <li><i class="fas fa-check"></i> Advanced analytics</li>
+                    </ul>
+                    <a href="#contact" class="btn btn-primary btn-block">Get Started</a>
+                </div>
+                
+                <div class="pricing-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="pricing-header">
+                        <h3>Enterprise</h3>
+                        <p>For large organizations</p>
+                    </div>
+                    <div class="pricing-price">
+                        <span class="currency">$</span>
+                        <span class="amount monthly">199</span>
+                        <span class="amount annual" style="display: none;">1990</span>
+                        <span class="period">/month</span>
+                    </div>
+                    <ul class="pricing-features">
+                        <li><i class="fas fa-check"></i> Unlimited users</li>
+                        <li><i class="fas fa-check"></i> All features</li>
+                        <li><i class="fas fa-check"></i> Dedicated support</li>
+                        <li><i class="fas fa-check"></i> Unlimited storage</li>
+                        <li><i class="fas fa-check"></i> Multiple domains</li>
+                        <li><i class="fas fa-check"></i> Custom integrations</li>
+                    </ul>
+                    <a href="#contact" class="btn btn-outline btn-block">Contact Sales</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="testimonials section">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2 class="section-title">What Our Clients Say</h2>
+                <p class="section-subtitle">Don't just take our word for it</p>
+            </div>
+            
+            <div class="testimonials-slider" data-aos="fade-up">
+                <div class="testimonial-track">
+                    <div class="testimonial-card">
+                        <div class="testimonial-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p class="testimonial-text">
+                            "Excellent service! They transformed our business with their innovative solutions. 
+                            The team was professional and delivered beyond our expectations."
+                        </p>
+                        <div class="testimonial-author">
+                            <img src="https://via.placeholder.com/60x60/667eea/ffffff?text=JD" alt="John Doe">
+                            <div>
+                                <h4>John Doe</h4>
+                                <p>CEO, Tech Corp</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="testimonial-card">
+                        <div class="testimonial-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p class="testimonial-text">
+                            "Outstanding results! Our revenue increased by 150% after implementing their strategies. 
+                            Highly recommend their services to any business."
+                        </p>
+                        <div class="testimonial-author">
+                            <img src="https://via.placeholder.com/60x60/764ba2/ffffff?text=SM" alt="Sarah Miller">
+                            <div>
+                                <h4>Sarah Miller</h4>
+                                <p>Marketing Director, Retail Plus</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="testimonial-card">
+                        <div class="testimonial-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p class="testimonial-text">
+                            "The best decision we made for our company. Professional, reliable, and always available. 
+                            They truly care about their clients' success."
+                        </p>
+                        <div class="testimonial-author">
+                            <img src="https://via.placeholder.com/60x60/667eea/ffffff?text=MC" alt="Michael Chen">
+                            <div>
+                                <h4>Michael Chen</h4>
+                                <p>Founder, StartupHub</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-nav">
+                    <button class="prev-btn"><i class="fas fa-chevron-left"></i></button>
+                    <button class="next-btn"><i class="fas fa-chevron-right"></i></button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact section bg-light">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2 class="section-title">Get In Touch</h2>
+                <p class="section-subtitle">We'd love to hear from you</p>
+            </div>
+            
+            <div class="contact-wrapper">
+                <div class="contact-info" data-aos="fade-right">
+                    <div class="contact-card">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <h3>Visit Us</h3>
+                        <p>123 Business Street<br>New York, NY 10001<br>United States</p>
+                    </div>
+                    
+                    <div class="contact-card">
+                        <i class="fas fa-phone-alt"></i>
+                        <h3>Call Us</h3>
+                        <p>+1 (555) 123-4567<br>+1 (555) 987-6543<br>Mon-Fri 9am-6pm EST</p>
+                    </div>
+                    
+                    <div class="contact-card">
+                        <i class="fas fa-envelope"></i>
+                        <h3>Email Us</h3>
+                        <p>info@bizpro.com<br>support@bizpro.com<br>sales@bizpro.com</p>
+                    </div>
+                    
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                
+                <div class="contact-form" data-aos="fade-left">
+                    <form id="contactForm">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="firstName">First Name *</label>
+                                <input type="text" id="firstName" name="firstName" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="lastName">Last Name *</label>
+                                <input type="text" id="lastName" name="lastName" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="email">Email Address *</label>
+                                <input type="email" id="email" name="email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">Phone Number</label>
+                                <input type="tel" id="phone" name="phone">
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="company">Company Name</label>
+                            <input type="text" id="company" name="company">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="service">Service Interested In</label>
+                            <select id="service" name="service">
+                                <option value="">Select a service</option>
+                                <option value="web-development">Web Development</option>
+                                <option value="mobile-apps">Mobile Apps</option>
+                                <option value="digital-marketing">Digital Marketing</option>
+                                <option value="cloud-solutions">Cloud Solutions</option>
+                                <option value="cybersecurity">Cybersecurity</option>
+                                <option value="analytics">Business Analytics</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message">Message *</label>
+                            <textarea id="message" name="message" rows="5" required></textarea>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="newsletter" name="newsletter">
+                                <span>Subscribe to our newsletter for updates and offers</span>
+                            </label>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary btn-lg btn-block">
+                            <i class="fas fa-paper-plane"></i> Send Message
+                        </button>
+                        
+                        <div id="form-message" class="form-message"></div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="newsletter">
+        <div class="container">
+            <div class="newsletter-content" data-aos="zoom-in">
+                <h2>Subscribe to Our Newsletter</h2>
+                <p>Get the latest updates, news, and special offers</p>
+                <form id="newsletterForm" class="newsletter-form">
+                    <div class="input-group">
+                        <input type="email" placeholder="Enter your email address" required>
+                        <button type="submit" class="btn btn-primary">Subscribe</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-top">
+                <div class="footer-column">
+                    <h3>About BizPro</h3>
+                    <p>We are dedicated to helping businesses grow and succeed through innovative solutions and exceptional service.</p>
+                    <div class="footer-social">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#pricing">Pricing</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Services</h3>
+                    <ul>
+                        <li><a href="#">Web Development</a></li>
+                        <li><a href="#">Mobile Apps</a></li>
+                        <li><a href="#">Digital Marketing</a></li>
+                        <li><a href="#">Cloud Solutions</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Legal</h3>
+                    <ul>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Cookie Policy</a></li>
+                        <li><a href="#">Disclaimer</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 BizPro Solutions. All rights reserved.</p>
+                <p>Designed with <i class="fas fa-heart"></i> by BizPro Team</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button id="backToTop" class="back-to-top">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+
+    <!-- Cookie Consent Banner -->
+    <div id="cookieConsent" class="cookie-consent">
+        <div class="cookie-content">
+            <p>We use cookies to enhance your experience. By continuing to visit this site you agree to our use of cookies.</p>
+            <button class="btn btn-primary btn-sm" onclick="acceptCookies()">Accept</button>
+            <a href="#" class="cookie-link">Learn More</a>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="js/script.js"></script>
+</body>
+</html>
+<script>
+// ==================== BACK TO TOP (Continued) ====================
+if (backToTopBtn) {
+    backToTopBtn.addEventListener('click', () => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    });
+}
+
+// ==================== COOKIE CONSENT ====================
+const cookieConsent = document.getElementById('cookieConsent');
+
+function acceptCookies() {
+    localStorage.setItem('cookiesAccepted', 'true');
+    cookieConsent.classList.remove('show');
+    cookieConsent.style.display = 'none';
+}
+
+// Check if cookies already accepted
+window.addEventListener('DOMContentLoaded', () => {
+    if (!localStorage.getItem('cookiesAccepted')) {
+        setTimeout(() => {
+            cookieConsent.classList.add('show');
+        }, 2000);
+    }
+});
+
+// Make acceptCookies available globally
+window.acceptCookies = acceptCookies;
+
+// ==================== AOS INITIALIZATION ====================
+if (typeof AOS !== 'undefined') {
+    AOS.init({
+        duration: 800,
+        easing: 'ease-in-out',
+        once: true,
+        offset: 100,
+        delay: 100
+    });
+}
+
+// ==================== FORM VALIDATION ====================
+function validateEmail(email) {
+    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return regex.test(email);
+}
+
+function validatePhone(phone) {
+    const regex = /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/;
+    return regex.test(phone) || phone === '';
+}
+
+// Real-time form validation
+const formInputs = document.querySelectorAll('.form-group input, .form-group textarea');
+
+formInputs.forEach(input => {
+    input.addEventListener('blur', function() {
+        validateInput(this);
+    });
+    
+    input.addEventListener('input', function() {
+        if (this.classList.contains('error')) {
+            validateInput(this);
+        }
+    });
+});
+
+function validateInput(input) {
+    const value = input.value.trim();
+    let isValid = true;
+    let errorMessage = '';
+    
+    // Remove existing error
+    removeError(input);
+    
+    // Required field validation
+    if (input.hasAttribute('required') && value === '') {
+        isValid = false;
+        errorMessage = 'This field is required';
+    }
+    
+    // Email validation
+    if (input.type === 'email' && value !== '' && !validateEmail(value)) {
+        isValid = false;
+        errorMessage = 'Please enter a valid email address';
+    }
+    
+    // Phone validation
+    if (input.type === 'tel' && value !== '' && !validatePhone(value)) {
+        isValid = false;
+        errorMessage = 'Please enter a valid phone number';
+    }
+    
+    if (!isValid) {
+        showError(input, errorMessage);
+    }
+    
+    return isValid;
+}
+
+function showError(input, message) {
+    input.classList.add('error');
+    input.style.borderColor = '#f56565';
+    
+    const errorDiv = document.createElement('div');
+    errorDiv.className = 'input-error';
+    errorDiv.textContent = message;
+    errorDiv.style.color = '#f56565';
+    errorDiv.style.fontSize = '0.875rem';
+    errorDiv.style.marginTop = '5px';
+    
+    input.parentNode.appendChild(errorDiv);
+}
+
+function removeError(input) {
+    input.classList.remove('error');
+    input.style.borderColor = '';
+    
+    const existingError = input.parentNode.querySelector('.input-error');
+    if (existingError) {
+        existingError.remove();
+    }
+}
+
+// ==================== GOOGLE SHEETS INTEGRATION ====================
+// Alternative: Send data to Google Sheets
+async function sendToGoogleSheets(data) {
+    const GOOGLE_SCRIPT_URL = 'YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL';
+    
+    try {
+        const response = await fetch(GOOGLE_SCRIPT_URL, {
+            method: 'POST',
+            mode: 'no-cors',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data)
+        });
+        
+        return true;
+    } catch (error) {
+        console.error('Google Sheets Error:', error);
+        return false;
+    }
+}
+
+// ==================== EMAIL JS INTEGRATION ====================
+// Alternative: Send email using EmailJS
+async function sendWithEmailJS(data) {
+    const SERVICE_ID = 'YOUR_SERVICE_ID';
+    const TEMPLATE_ID = 'YOUR_TEMPLATE_ID';
+    const PUBLIC_KEY = 'YOUR_PUBLIC_KEY';
+    
+    try {
+        // Load EmailJS SDK if not loaded
+        if (typeof emailjs === 'undefined') {
+            await loadScript('https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js');
+            emailjs.init(PUBLIC_KEY);
+        }
+        
+        const response = await emailjs.send(SERVICE_ID, TEMPLATE_ID, data);
+        return response.status === 200;
+    } catch (error) {
+        console.error('EmailJS Error:', error);
+        return false;
+    }
+}
+
+// Helper function to load scripts dynamically
+function loadScript(src) {
+    return new Promise((resolve, reject) => {
+        const script = document.createElement('script');
+        script.src = src;
+        script.onload = resolve;
+        script.onerror = reject;
+        document.head.appendChild(script);
+    });
+}
+
+// ==================== TYPING ANIMATION ====================
+function typeWriter(element, text, speed = 100) {
+    let i = 0;
+    element.textContent = '';
+    
+    function type() {
+        if (i < text.length) {
+            element.textContent += text.charAt(i);
+            i++;
+            setTimeout(type, speed);
+        }
+    }
+    
+    type();
+}
+
+// ==================== COUNTER ANIMATION ====================
+function animateCounter(element, target, duration = 2000) {
+    let start = 0;
+    const increment = target / (duration / 16);
+    
+    function updateCounter() {
+        start += increment;
+        if (start < target) {
+            element.textContent = Math.floor(start);
+            requestAnimationFrame(updateCounter);
+        } else {
+            element.textContent = target;
+        }
+    }
+    
+    updateCounter();
+}
+
+// Animate counters when they come into view
+const counters = document.querySelectorAll('.stat h3');
+const observerOptions = {
+    threshold: 0.5,
+    rootMargin: '0px'
+};
+
+const counterObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            const target = entry.target;
+            const value = parseInt(target.textContent);
+            if (!isNaN(value)) {
+                animateCounter(target, value);
+            }
+            counterObserver.unobserve(target);
+        }
+    });
+}, observerOptions);
+
+counters.forEach(counter => {
+    counterObserver.observe(counter);
+});
+
+// ==================== LAZY LOADING IMAGES ====================
+const lazyImages = document.querySelectorAll('img[data-src]');
+
+const imageObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            const img = entry.target;
+            img.src = img.dataset.src;
+            img.removeAttribute('data-src');
+            imageObserver.unobserve(img);
+        }
+    });
+});
+
+lazyImages.forEach(img => {
+    imageObserver.observe(img);
+});
+
+// ==================== PARALLAX EFFECT ====================
+const parallaxElements = document.querySelectorAll('[data-parallax]');
+
+window.addEventListener('scroll', () => {
+    const scrollY = window.scrollY;
+    
+    parallaxElements.forEach(element => {
+        const speed = element.dataset.parallax || 0.5;
+        element.style.transform = `translateY(${scrollY * speed}px)`;
+    });
+});
+
+// ==================== DARK MODE TOGGLE (Optional) ====================
+function toggleDarkMode() {
+    document.body.classList.toggle('dark-mode');
+    const isDark = document.body.classList.contains('dark-mode');
+    localStorage.setItem('darkMode', isDark);
+}
+
+// Check for saved dark mode preference
+if (localStorage.getItem('darkMode') === 'true') {
+    document.body.classList.add('dark-mode');
+}
+
+// ==================== UTILITY FUNCTIONS ====================
+// Debounce function for performance
+function debounce(func, wait) {
+    let timeout;
+    return function executedFunction(...args) {
+        const later = () => {
+            clearTimeout(timeout);
+            func(...args);
+        };
+        clearTimeout(timeout);
+        timeout = setTimeout(later, wait);
+    };
+}
+
+// Throttle function for performance
+function throttle(func, limit) {
+    let inThrottle;
+    return function(...args) {
+        if (!inThrottle) {
+            func.apply(this, args);
+            inThrottle = true;
+            setTimeout(() => inThrottle = false, limit);
+        }
+    };
+}
+
+// ==================== KEYBOARD NAVIGATION ====================
+document.addEventListener('keydown', (e) => {
+    // Close mobile menu with Escape key
+    if (e.key === 'Escape' && navMenu.classList.contains('active')) {
+        navMenu.classList.remove('active');
+        const spans = mobileNavToggle.querySelectorAll('span');
+        spans[0].style.transform = 'none';
+        spans[1].style.opacity = '1';
+        spans[2].style.transform = 'none';
+    }
+});
+
+// ==================== PRINT STYLES ====================
+window.addEventListener('beforeprint', () => {
+    // Hide unnecessary elements when printing
+    document.querySelectorAll('.no-print').forEach(el => {
+        el.style.display = 'none';
+    });
+});
+
+window.addEventListener('afterprint', () => {
+    document.querySelectorAll('.no-print').forEach(el => {
+        el.style.display = '';
+    });
+});
+
+// ==================== CONSOLE MESSAGE ====================
+console.log('%c Welcome to BizPro Solutions! ', 
+    'background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 10px 20px; font-size: 16px; border-radius: 5px;');
+console.log('%c Built with ❤️ by BizPro Team ', 
+    'color: #667eea; font-size: 12px;');
+
+// ==================== SERVICE WORKER REGISTRATION (PWA Support) ====================
+if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/sw.js')
+            .then(registration => {
+                console.log('ServiceWorker registered:', registration.scope);
+            })
+            .catch(error => {
+                console.log('ServiceWorker registration failed:', error);
+            });
+    });
+}
+    <script>
